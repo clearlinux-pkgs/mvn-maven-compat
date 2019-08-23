@@ -4,18 +4,21 @@
 #
 Name     : mvn-maven-compat
 Version  : 3.0
-Release  : 2
+Release  : 3
 URL      : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 Source0  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
-Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
-Source2  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
-Source3  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
-Source4  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
-Source5  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
+Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.jar
+Source2  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.pom
+Source3  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
+Source4  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
+Source5  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
+Source6  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
+Source7  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-maven-compat-data = %{version}-%{release}
+Requires: mvn-maven-compat-license = %{version}-%{release}
 
 %description
 No detailed description available
@@ -28,28 +31,46 @@ Group: Data
 data components for the mvn-maven-compat package.
 
 
+%package license
+Summary: license components for the mvn-maven-compat package.
+Group: Default
+
+%description license
+license components for the mvn-maven-compat package.
+
+
 %prep
+%setup -q -n META-INF
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-maven-compat
+cp LICENSE %{buildroot}/usr/share/package-licenses/mvn-maven-compat/LICENSE
+cp NOTICE %{buildroot}/usr/share/package-licenses/mvn-maven-compat/NOTICE
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0
-cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0
+cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
-cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
-cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
+cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
 
 
 %files
@@ -57,9 +78,16 @@ cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.jar
+/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.pom
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-maven-compat/LICENSE
+/usr/share/package-licenses/mvn-maven-compat/NOTICE
