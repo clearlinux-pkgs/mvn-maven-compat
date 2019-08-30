@@ -4,7 +4,7 @@
 #
 Name     : mvn-maven-compat
 Version  : 3.0
-Release  : 3
+Release  : 4
 URL      : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 Source0  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.jar
