@@ -4,7 +4,7 @@
 #
 Name     : mvn-maven-compat
 Version  : 3.0
-Release  : 4
+Release  : 5
 URL      : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 Source0  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.jar
 Source1  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0.4/maven-compat-3.0.4.jar
@@ -12,13 +12,13 @@ Source2  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0.4/ma
 Source3  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
 Source4  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
 Source5  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
-Source6  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
-Source7  : https://repo1.maven.org/maven2/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-maven-compat-data = %{version}-%{release}
 Requires: mvn-maven-compat-license = %{version}-%{release}
+BuildRequires : apache-maven
+BuildRequires : buildreq-mvn
 
 %description
 No detailed description available
@@ -66,12 +66,6 @@ cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9
 cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
 
-mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
-cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
-
-mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0
-cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
-
 
 %files
 %defattr(-,root,root,-)
@@ -84,8 +78,6 @@ cp %{SOURCE7} %{buildroot}/usr/share/java/.m2/repository/org/apache/maven/maven-
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.0/maven-compat-3.0.pom
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.jar
 /usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.3.9/maven-compat-3.3.9.pom
-/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.jar
-/usr/share/java/.m2/repository/org/apache/maven/maven-compat/3.6.0/maven-compat-3.6.0.pom
 
 %files license
 %defattr(0644,root,root,0755)
